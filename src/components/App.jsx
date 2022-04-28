@@ -1,17 +1,24 @@
+import { Switch, Route } from 'react-router-dom';
+import AppBar from './AppBar/AppBar';
+import Movies from './pages/Movies';
+import HomeView from './pages/HomeView';
+import NotFound from './pages/NotFound';
+
 export const App = () => {
   return (
-    <div
-      style={{
-        height: '100vh',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        fontSize: 40,
-        textTransform: 'uppercase',
-        color: '#010101',
-      }}
-    >
-      React homework template
-    </div>
+    <>
+      <AppBar />
+      <Switch>
+        <Route exact path="/">
+          <HomeView />
+        </Route>
+        <Route path="/movies">
+          <Movies />
+        </Route>
+        <Route>
+          <NotFound />
+        </Route>
+      </Switch>
+    </>
   );
 };
