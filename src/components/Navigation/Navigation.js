@@ -6,7 +6,7 @@ export default function Navigation() {
       <NavLink exact to="/">
         Main
       </NavLink>
-      <NavLink to="/movies">Films</NavLink>
+      <NavLink to="/movies"> Movies</NavLink>
     </nav>
   );
 }
