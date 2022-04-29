@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router-dom';
 import './components/StylesApp.css';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <BrowserRouter basename="/goit-react-hw-05-movies/">
+  <BrowserRouter>
     <App />
   </BrowserRouter>
 );

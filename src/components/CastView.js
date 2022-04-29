@@ -4,7 +4,7 @@ export default function CastView({ movie }) {
   const HOST = 'https://image.tmdb.org/t/p/w500';
 
   const { ChangeQuery } = useParams();
-  console.log('ChangeQuery: ', ChangeQuery);
+  // console.log('ChangeQuery: ', ChangeQuery);
 
   const makeCastMarkup = () => {
     return movie?.credits.cast.map(elem => {

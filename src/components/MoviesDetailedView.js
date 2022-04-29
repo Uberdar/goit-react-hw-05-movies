@@ -1,5 +1,7 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Route } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { Link, useRouteMatch } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
 import CastView from './CastView';
@@ -9,8 +11,12 @@ export default function MovieDetailedView() {
   const { url } = useRouteMatch();
   const { moviesID } = useParams();
   const [movie, setMovie] = useState(null);
-  console.log('movie: ', movie);
-
+  const testLoc = useLocation();
+  // console.log('testLoc: ', testLoc);
+  const testUseHistory = useHistory();
+  // console.log('testUseHistory: ', testUseHistory);
+  const testUseRef = useRef(testLoc);
+  // console.log('testUseRef: ', testUseRef);
   useEffect(() => {
     fetch(
       `https://api.themoviedb.org/3/movie/${moviesID}?api_key=c92c75743b7b53c3d8b6c69fd6fd4463&append_to_response=images,credits,reviews`
@@ -50,9 +56,15 @@ export default function MovieDetailedView() {
       </ul>
     );
   };
-
+  const handlerGoBack = () => {
+    // testUseHistory.goBack();
+    testUseHistory.push({ ...testUseRef.current.state?.from });
+    // ...testLoc?.state?.from
+    // console.log('testUseHistory: ', testUseHistory);
+  };
   return (
     <>
+      <button onClick={handlerGoBack}>Go back</button>
       <p>Movie ID:{moviesID} page</p>
       <hr />
       {movie ? makeIdMarkup() : null}
